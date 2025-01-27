@@ -1,0 +1,17 @@
+<h1>Othello Game</h1>
+<p>Current Player: <%= @game.current_player %></p>
+<table>
+  <% @game.board.each_with_index do |row, r_idx| %>
+    <tr>
+      <% row.each_with_index do |cell, c_idx| %>
+        <td>
+          <% if cell %>
+            <%= cell %>
+          <% else %>
+            <%= button_to 'Place', move_game_path(@game, row: r_idx, col: c_idx), method: :post %>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
